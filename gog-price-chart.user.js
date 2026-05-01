@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name            GOG - Price Charts
-// @namespace       https://github.com/idkicarus/
-// @homepageURL     https://github.com/idkicarus/GOG-price-charts
-// @supportURL      https://github.com/idkicarus/GOG-price-charts/issues
+// @namespace       https://github.com/Patrxgt/
+// @homepageURL     https://github.com/Patrxgt/GOG-price-charts-PL
+// @supportURL      https://github.com/Patrxgt/GOG-price-charts-PL/issues
 // @match           https://www.gog.com/*/game/*
-// @description     Fetches price history from GOGDB.org to generate price charts for games on GOG
+// @description     Pobiera historię cen z serwisu GOGDB.org w celu wygenerowania wykresów cen gier dostępnych na platformie GOG
 // @version         1.0
 // @grant           GM.xmlHttpRequest
 // @require         https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js
 // @require         https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0
-// @updateURL 	    https://raw.githubusercontent.com/idkicarus/GOG-price-charts/main/gog-price-chart.user.js
-// @downloadURL     https://raw.githubusercontent.com/idkicarus/GOG-price-charts/main/gog-price-chart.user.js
+// @updateURL 	    https://raw.githubusercontent.com/Patrxgt/GOG-price-charts-PL/main/gog-price-chart.user.js
+// @downloadURL     https://raw.githubusercontent.com/Patrxgt/GOG-price-charts-PL/main/gog-price-chart.user.js
 // @license MIT
 // ==/UserScript==
 
