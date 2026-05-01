@@ -1,29 +1,29 @@
 # GOG Price Charts
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Licencja](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-This userscript fetches historical price data from [GOG DB](https://www.gogdb.org/), displays an interactive chart, and notes the lowest known sale price from GOG, which helps you decide whether to buy a game now or wait for a better deal.
+Skrypt pobierający dane historyczne dotyczące cen z [GOG DB](https://www.gogdb.org/), wyświetlający interaktywny wykres oraz wyświetlający najniższą znaną cenę na stronie GOG, by pomóc zdecydować, czy kupić grę teraz, czy poczekać na lepszą ofertę.
 
-The script only fetches data when you view an individual game's product page. Each game's price history is cached for 24 hours to limit unnecessary requests to GOG DB. The cache length can be adjusted by editing line 23 of the script after installation.
+Pobiera on dane wyłącznie podczas przeglądania strony produktu konkretnej gry. Historia cen każdej gry jest buforowana przez 24 godziny, aby ograniczyć zbędne żądania kierowane do GOG DB. Czas przechowywania w pamięci podręcznej można dostosować, edytując wiersz 23 skryptu po jego zainstalowaniu.
 
-## Screenshot
-![Price chart](Images/preview_GOG-DB-price-chart.png "Price history for Cyberpunk 2077")
-
-
-## Compatibility
-This script has only been tested with [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Google Chrome](https://www.google.com/chrome/). However, it should also work with other script managers, like [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/), and with other modern browsers.
+## Zrzuty ekranu
+![Wykres cen](Images/preview_GOG-DB-price-chart.png "Historia cen Cyberpunka 2077")
 
 
-## Installation
-1. Install a script manager for your browser:
-    * **Firefox**: [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/), [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) or [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)
-    * **Google Chrome** / **Vivaldi**: [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) or [Violentmonkey](https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)
-    * **Microsoft Edge**: [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) or [Violentmonkey](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao)
+## Kompatybilność
+Ten skrypt był testowany jedynie z [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) na [Firefoxie](https://www.mozilla.org/en-US/firefox/new/) oraz [Google Chrome](https://www.google.com/chrome/), choć pownien on także działać z innymi menadżerami skryptów, jak [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/), oraz innymi nowoczesnymi przeglądarkami.
+
+
+## Instalacja
+1. Zainstaluj menedżer skryptów dla swojej przeglądarki:
+    * **Firefox**: [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/), [Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) lub [Violentmonkey](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/)
+    * **Google Chrome** / **Vivaldi**: [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) lub [Violentmonkey](https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag)
+    * **Microsoft Edge**: [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) lub [Violentmonkey](https://microsoftedge.microsoft.com/addons/detail/violentmonkey/eeagobfjdenkkddmbclomhiblgggliao)
     * **Safari**: [Tampermonkey](https://apps.apple.com/app/tampermonkey/id6738342400)
 
-2. If prompted, restart the browser.
+2. Jeśli trzeba, zrestartuj przeglądarkę.
 
-3. Install the script from your preferred source: [GitHub](https://raw.githubusercontent.com/idkicarus/GOG-price-charts/main/gog-price-chart.user.js) or [Greasy Fork](https://greasyfork.org/en/scripts/527267-gogdb-price-charts).
+3. Zainstaluj skrypt z preferowanego źródła: [GitHub](https://raw.githubusercontent.com/idkicarus/GOG-price-charts/main/gog-price-chart.user.js) lub [Greasy Fork](https://greasyfork.org/en/scripts/527267-gogdb-price-charts).
 
-4. Visit a product page on GOG. The first time you visit with the script enabled your script manager will ask whether you want to allow access to a cross-origin resource at the domain www.gogdb.org. Click allow/accept. If you deny access, the script won't be able to fetch any past price data.
+4. Odwiedź stronę produktu na GOG. Przy pierwszej wizycie z włączonym skryptem, menedżer skryptów zapyta, czy chcesz zezwolić na dostęp do zasobów z innej domeny pod adresem www.gogdb.org. Kliknij „Zezwól” lub „Akceptuj”. Jeśli odmówisz dostępu, skrypt nie będzie mógł pobrać żadnych danych dotyczących poprzednich cen.
 
-![Script approval](Images/preview_cross-origin-resource.png "Cross-origin resource approval")
+![Zezwolenie na działanie skryptu](Images/preview_cross-origin-resource.png "Zatwierdzanie zasobów z innych domen")
