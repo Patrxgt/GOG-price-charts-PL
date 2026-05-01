@@ -57,10 +57,10 @@
         gog_ph_div.setAttribute("id", "gog_ph_div");
         gog_ph_div.innerHTML = `
             <div class="title">
-                <div class="title__underline-text">Price history</div>
+                <div class="title__underline-text">Historia cen</div>
                 <div class="title__additional-options"></div>
             </div>
-            <div id="gog_ph_placeholder" class="gog_ph_whitebg gog_ph_shadow">Loading price history...</div>
+            <div id="gog_ph_placeholder" class="gog_ph_whitebg gog_ph_shadow">Ładowanie historii cen...</div>
             <canvas id="gog_ph_chart_canvas" class="gog_ph_whitebg gog_ph_shadow"></canvas>
             <p style="margin-top: 10px;">
                 <span id="gog_ph_lowest_price"></span>
@@ -122,7 +122,7 @@
                         callback(unsafeWindow.productcardData.cardProductId);
                     }
                 } catch (error) {
-                    if (DEBUG_MODE) console.error("Error accessing productcardData:", error);
+                    if (DEBUG_MODE) console.error("Wystąpił błąd podczas uzyskiwania dostępu do productcardData:", error);
                     clearInterval(pollingInterval);
                 }
             }, 100); // Poll every 100ms.
@@ -132,7 +132,7 @@
         setTimeout(() => {
             if (pollingInterval) {
                 clearInterval(pollingInterval);
-                if (DEBUG_MODE) console.warn("Timeout: Unable to load product data.");
+                if (DEBUG_MODE) console.warn("Błąd: Nie można załadować danych produktu.");
             }
         }, 10000);
     }
@@ -148,7 +148,7 @@
 
         // Check if cached data is available and not expired (e.g., 24 hours).
         if (cachedData && cacheTimestamp && Date.now() - cacheTimestamp < CACHE_LENGTH) {
-            if (DEBUG_MODE) console.log("Using cached data:", JSON.parse(cachedData));
+            if (DEBUG_MODE) console.log("Korzystanie z danych pamięci podręcznej:", JSON.parse(cachedData));
             processPriceData(JSON.parse(cachedData), productId);
             return;
         }
@@ -160,7 +160,7 @@
             onload: function(response) {
                 if (response.status === 200) {
                     const jsonData = JSON.parse(response.responseText);
-                    if (DEBUG_MODE) console.log("Fetched price data:", jsonData);
+                    if (DEBUG_MODE) console.log("Pobrane dane dotyczące cen:", jsonData);
 
                     // Cache the response and timestamp.
                     localStorage.setItem(cacheKey, response.responseText);
@@ -170,13 +170,13 @@
                 } else {
                     document.getElementById("gog_ph_placeholder").textContent =
                         response.status === 404 ?
-                        "No historical price data available." :
-                        "Failed to load price history.";
+                        "Brak dostępnych danych dotyczących poprzednich cen." :
+                        "Nie udało się załadować historii cen.";
                 }
             },
             onerror: function() {
                 document.getElementById("gog_ph_placeholder").textContent =
-                    "Failed to load price history.";
+                    "Nie udało się załadować historii cen.";
             },
         });
     }
@@ -197,8 +197,8 @@
         } = parsePriceHistory(jsonData);
 
         if (DEBUG_MODE) {
-            console.log("Processed labels:", labels);
-            console.log("Processed prices:", prices);
+            console.log("Przetworzone etykiety:", labels);
+            console.log("Przetworzone ceny:", prices);
         }
 
         // Check if there is valid data to display.
@@ -213,16 +213,16 @@
 
             if (lowestPrice > 0 && lowestPrice < highestBasePrice) {
                 // Display the lowest price if it is valid and less than the highest base price.
-                lowestPriceElement.textContent = `Historical low: $${lowestPrice.toFixed(2)}.`;
-                dataSourceElement.innerHTML = ` (Data retrieved from <a id="gog_ph_gogdb_link" class="un" href="https://www.gogdb.org/product/${productId}" target="_blank"><u>GOG Database</u></a>.)`;
+                lowestPriceElement.textContent = `Historycznie najniższa: $${lowestPrice.toFixed(2)}.`;
+                dataSourceElement.innerHTML = ` (Dane otrzymane za pomocą <a id="gog_ph_gogdb_link" class="un" href="https://www.gogdb.org/product/${productId}" target="_blank"><u>GOG Database</u></a>.)`;
             } else {
                 lowestPriceElement.textContent = "";
-                dataSourceElement.innerHTML = `Data retrieved from <a id="gog_ph_gogdb_link" class="un" href="https://www.gogdb.org/product/${productId}" target="_blank"><u>GOG Database</u></a>.`;
+                dataSourceElement.innerHTML = `Dane otrzymane za pomocą <a id="gog_ph_gogdb_link" class="un" href="https://www.gogdb.org/product/${productId}" target="_blank"><u>GOG Database</u></a>.`;
             }
         } else {
             // Display a message if no price history data is available.
             document.getElementById("gog_ph_placeholder").textContent =
-                "No historical price data available.";
+                "Dane historii cen są niedostępne.";
         }
     }
 
@@ -316,7 +316,7 @@
             data: {
                 labels, // Use the provided labels for the x-axis.
                 datasets: [{
-                    label: "Price", // Label for the dataset.
+                    label: "Cena", // Label for the dataset.
                     borderColor: "rgb(241, 142, 0)", // Set the line color.
                     backgroundColor: "rgba(241, 142, 0, 0.5)", // Set the fill color.
                     data: prices, // Use the provided prices for the y-axis.
@@ -329,7 +329,7 @@
                     x: {
                         type: "time", // Use a time scale for the x-axis.
                         time: {
-                            tooltipFormat: "MMM d, yyyy", // Format for tooltips (i.e., short month, day, 4-digit year).
+                            tooltipFormat: "d MMM, yyyy", // Format for tooltips (i.e., short month, day, 4-digit year).
                             displayFormats: {
                                 month: "MMM yyyy", // Format for month labels (i.e., short month, 4-digit year).
                             },
@@ -371,7 +371,7 @@
             data: {
                 labels, // Use the provided labels for the x-axis.
                 datasets: [{
-                    label: "Price", // Label for the dataset.
+                    label: "Cena", // Label for the dataset.
                     borderColor: "rgb(241, 142, 0)", // Set the line color.
                     backgroundColor: "rgba(241, 142, 0, 0.5)", // Set the fill color.
                     data: prices, // Use the provided prices for the y-axis.
@@ -386,7 +386,7 @@
                         ticks: {
                             autoSkip: false, // Do not skip ticks.
                             callback: function(value, index) {
-                                return labels[index].toLocaleDateString("en-US", {
+                                return labels[index].toLocaleDateString("pl-PL", {
                                     month: "short",
                                     year: "numeric",
                                 }); // Format x-axis labels as short month and year.
@@ -409,7 +409,7 @@
                             title: function(context) {
                                 const index = context[0].dataIndex;
                                 // Format the tooltip title to display the date as "Month Day, Year"
-                                return labels[index].toLocaleDateString("en-US", {
+                                return labels[index].toLocaleDateString("pl-PL", {
                                     month: "short",
                                     day: "numeric",
                                     year: "numeric",
